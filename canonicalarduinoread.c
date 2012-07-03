@@ -20,6 +20,8 @@
 #include <termios.h>
 #include <errno.h>
 #include <sys/ioctl.h>
+
+#define DEBUG 1
   
 int main(int argc, char *argv[])
 {
@@ -58,5 +60,15 @@ int main(int argc, char *argv[])
 
   printf("%i bytes read, buffer contains: %s\n", n, buf);
  
+  if(DEBUG)
+    {
+      printf("Printing individual characters in buf as integers...\n\n");
+      for(i=0; i<n; i++)
+	{
+	  printf("Byte %i:%i, ",i+1, (int)buf[i]);
+	}
+      printf("\n");
+    }
+
   return 0;
 }
